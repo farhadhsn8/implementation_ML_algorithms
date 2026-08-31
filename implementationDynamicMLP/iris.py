@@ -43,13 +43,13 @@ IRIS_MLP = MLP(train[:,0:4] ,train[:,4:7] ,PARAMS )
 # IRIS_MLP = MLP(s1 ,s2, PARAMS )
 
 
-IRIS_MLP.trainingModel(100)
+IRIS_MLP.train(100)
 
 
 s=0
 k=0
 for i in test: #test or train
-  est = IRIS_MLP.calculateMLP_outputForRow_k(i[0:4])
+  est = IRIS_MLP.predict_row(i[0:4])
   print(est , i[4:7])
   k+=int(np.argmax(est) == np.argmax(i[4:7]) )
   s+=1

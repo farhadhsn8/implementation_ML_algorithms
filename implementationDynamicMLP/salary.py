@@ -34,13 +34,13 @@ PARAMS = {
 SALARY_MLP = MLP(train['YearsExperience'].values.reshape(-1,1) ,train['Salary'].values.reshape(-1,1) ,PARAMS )
 
 
-SALARY_MLP.trainingModel(100)
+SALARY_MLP.train(100)
 
 def plotting(test):
     results = []
     test = test.sort_values(by=['YearsExperience'])
     for i in test.values: #test or train
-        est = SALARY_MLP.calculateMLP_outputForRow_k(i[0])
+        est = SALARY_MLP.predict_row(i[0])
         results.append(est)
     
     
